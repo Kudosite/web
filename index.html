@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c0408" id="themeColor">
+<title>James Kudo</title>
+<meta name="description" content="James Kudo: tutorial, YouTube channel and script download.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-red">
+
+<!-- icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M12 3 2 12h3v8h5v-6h4v6h5v-8h3z"/></symbol>
+  <symbol id="i-tutorial" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2v3.6c0 1.7 3.1 3.2 7 3.2s7-1.5 7-3.2v-3.6l-7 3.8-7-3.8z"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2C.5 9 .5 12 .5 12s0 3 .5 4.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.5-1.8.5-4.8.5-4.8s0-3-.5-4.8zM9.7 15.5v-7l6 3.5-6 3.5z"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M11 3h2v8.2l2.6-2.6L17 10l-5 5-5-5 1.4-1.4L11 11.2V3zM5 19h14v2H5z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 2c-2.3 0-7 1.2-7 3.5V19h14v-2.5C15 14.2 10.3 13 8 13zm8 0-1 .1c1.2.8 2 1.9 2 3.4V19h6v-2.5c0-2.3-4.7-3.5-7-3.5z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm6-6v-5c0-3.1-1.6-5.6-4.5-6.3V4a1.5 1.5 0 0 0-3 0v.7C7.6 5.4 6 7.9 6 11v5l-2 2v1h16v-1l-2-2z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.2h-4l-.4 2.7a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1c.5.4 1.1.7 1.7 1l.4 2.7h4l.4-2.7c.6-.3 1.2-.6 1.7-1l2.5 1 2-3.5zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 11h11.2l-4.6-4.6L13 5l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></symbol>
+</svg>
+
+<!-- LOADING -->
+<div id="loadingScreen" aria-hidden="true">
+  <div class="loading-grid"></div>
+  <div class="loading-glow"></div>
+  <div class="loading-particles"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="loading-content">
+    <div class="loading-logo" data-text="JAMES KUDO">JAMES KUDO</div>
+    <div class="loading-subtitle">LOAD</div>
+    <div class="loading-progress-wrap">
+      <div class="loading-bar"><div class="loading-fill" id="loadingFill"></div></div>
+      <div class="loading-percent" id="loadingPercent">1%</div>
+      <div class="loading-status" id="loadingStatus">INITIALIZING...</div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- TOP BAR -->
+<header class="top">
+  <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="topMenu">
+    <svg class="i"><use href="#i-menu"/></svg>
+  </button>
+  <div class="title">JAMES KUDO</div>
+  <button class="icon-btn" id="themeBtn" type="button" aria-label="Choose theme" aria-expanded="false" aria-controls="themeMenu">
+    <svg class="i"><use href="#i-gear"/></svg>
+  </button>
+</header>
+
+<!-- SIDE MENU -->
+<div class="top-menu-overlay" id="topMenuOverlay"></div>
+<nav class="top-menu" id="topMenu" aria-label="Main menu">
+  <div class="top-menu-title">JAMES KUDO MENU</div>
+  <button type="button" data-go="home"><svg class="i"><use href="#i-home"/></svg>HOME</button>
+  <button type="button" data-go="tutorial"><svg class="i"><use href="#i-tutorial"/></svg>TUTORIAL</button>
+  <button type="button" data-go="download"><svg class="i"><use href="#i-dl"/></svg>SCRIPT DOWNLOAD</button>
+  <a href="#" data-yt><svg class="i"><use href="#i-yt"/></svg>YOUTUBE</a>
+  <button type="button" class="top-menu-close" id="menuClose">CLOSE MENU</button>
+</nav>
+
+<!-- THEME MENU -->
+<div class="theme-overlay" id="themeOverlay"></div>
+<div class="theme-menu" id="themeMenu" role="dialog" aria-label="Select theme">
+  <div class="theme-menu-title">SELECT THEME</div>
+  <button type="button" class="theme-option" data-theme="green" aria-pressed="false">
+    <span class="theme-preview hacker-preview"></span><span class="theme-name">GREEN</span><svg class="i tick"><use href="#i-check"/></svg>
+  </button>
+  <button type="button" class="theme-option" data-theme="white" aria-pressed="false">
+    <span class="theme-preview bw-preview"></span><span class="theme-name">WHITE</span><svg class="i tick"><use href="#i-check"/></svg>
+  </button>
+  <button type="button" class="theme-option" data-theme="red" aria-pressed="false">
+    <span class="theme-preview red-preview"></span><span class="theme-name">RED</span><svg class="i tick"><use href="#i-check"/></svg>
+  </button>
+  <button type="button" class="theme-close" id="themeClose">CLOSE</button>
+</div>
+
+<!-- HOME -->
+<main class="view active" id="home">
+
+  <div class="profile">
+    <div class="avatar">J</div>
+    <div>
+      <div class="username">@kudooff1cial</div>
+      <div class="badge">FREE SCRIPT</div>
+    </div>
+  </div>
+
+  <div class="rel-banner" aria-label="James Kudo">
+    <div class="glitch-pixels"></div>
+    <div class="rel-logo">
+      <span class="glitch-text" data-text="JAMES">JAMES</span>
+      <span class="h4x">KUDO</span>
+    </div>
+    <div class="scanline"></div>
+  </div>
+
+  <section class="home-section">
+    <h2 class="section-title">SCRIPT DOWNLOAD</h2>
+    <div class="sc-card">
+      <div class="sc-icon"><svg class="i"><use href="#i-dl"/></svg></div>
+      <div class="sc-title">Latest Script</div>
+      <p class="sc-desc">Download the newest script or copy the code from the download page.</p>
+      <button class="sc-download" type="button" data-go="download">
+        <span>GET SCRIPT</span><svg class="i"><use href="#i-arrow"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <h2 class="section-title">YOUTUBE</h2>
+    <a class="skip-card" href="#" data-yt>
+      <span class="skip-icon"><svg class="i"><use href="#i-yt"/></svg></span>
+      <span class="skip-content">
+        <span class="skip-title">YouTube Channel</span>
+        <span class="skip-desc">Visit the channel</span>
+      </span>
+      <svg class="i skip-arrow"><use href="#i-arrow"/></svg>
+    </a>
+  </section>
+
+  <section class="home-section">
+    <h2 class="section-title">TUTORIAL</h2>
+    <button class="skip-card" type="button" data-go="tutorial">
+      <span class="skip-icon"><svg class="i"><use href="#i-play"/></svg></span>
+      <span class="skip-content">
+        <span class="skip-title">Step-by-step video guide</span>
+        <span class="skip-desc">Watch the full guide before you start.</span>
+      </span>
+      <svg class="i skip-arrow"><use href="#i-arrow"/></svg>
+    </button>
+  </section>
+
+  <section class="home-section" aria-label="Site statistics">
+    <h2 class="section-title">STATS</h2>
+    <div class="stats">
+      <div class="stat"><svg class="i"><use href="#i-users"/></svg><b data-stat="visitors">–</b><small>Total Visitors</small></div>
+      <div class="stat"><svg class="i"><use href="#i-dl"/></svg><b data-stat="downloads">–</b><small>Total Downloads</small></div>
+      <div class="stat"><svg class="i"><use href="#i-play"/></svg><b data-stat="tutorial">–</b><small>Tutorial Views</small></div>
+      <div class="stat"><svg class="i"><use href="#i-bell"/></svg><b data-stat="subscribe">–</b><small>Subscribe Clicks</small></div>
+    </div>
+  </section>
+
+  <p class="foot">© 2026 James Kudo. All rights reserved.</p>
+</main>
+
+<!-- TUTORIAL -->
+<section class="view" id="tutorial">
+  <h2 class="page-title">TUTORIAL</h2>
+
+  <div class="tutorial-card">
+    <div class="tutorial-header">
+      <span class="tutorial-icon"><svg class="i"><use href="#i-tutorial"/></svg></span>
+      <div>
+        <div class="tutorial-title">Tutorial</div>
+        <div class="tutorial-subtitle">Watch the full guide before you start.</div>
+      </div>
+    </div>
+
+    <div class="youtube-box" id="player">
+      <img id="thumb" alt="" hidden>
+      <div class="ph"><svg class="i"><use href="#i-play"/></svg></div>
+    </div>
+
+    <button class="sc-download" id="watchBtn" type="button">
+      <span>WATCH TUTORIAL</span><svg class="i"><use href="#i-play"/></svg>
+    </button>
+    <a class="ghost-btn" id="tutLink" target="_blank" rel="noopener noreferrer" href="#" hidden>OPEN ON YOUTUBE</a>
+
+    <div class="tutorial-info">
+      <span class="info-dot"></span>
+      <div>
+        <b>Before you start</b>
+        <p>Watch the video to the end, then go to the download page to get the script.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="view" id="download">
+  <h2 class="page-title">SCRIPT DOWNLOAD</h2>
+
+  <article class="sc-card dl-card">
+    <header class="dl-head">
+      <span class="file">JS</span>
+      <div>
+        <h3 id="sName"></h3>
+        <p id="sDesc"></p>
+      </div>
+    </header>
+    <ul class="meta">
+      <li><small>Version</small><b id="sVer"></b></li>
+      <li><small>Type</small><b id="sType"></b></li>
+      <li><small>Size</small><b id="sSize"></b></li>
+    </ul>
+    <pre class="code" tabindex="0"><code id="code"></code></pre>
+    <button class="sc-download dlbtn" id="dlBtn" type="button">
+      <span class="fill"></span><span class="lbl">DOWNLOAD SCRIPT</span><svg class="i"><use href="#i-dl"/></svg>
+    </button>
+    <button class="ghost-btn" id="copyBtn" type="button">COPY SCRIPT</button>
+  </article>
+
+  <div class="virtual-status"><span class="status-dot"></span>SCRIPT ONLINE</div>
+</section>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav" aria-label="Primary">
+  <span class="nav-pill" aria-hidden="true"></span>
+  <button class="nav-item active" type="button" data-go="home"><span class="nav-icon"><svg class="i"><use href="#i-home"/></svg></span>HOME</button>
+  <button class="nav-item" type="button" data-go="tutorial"><span class="nav-icon"><svg class="i"><use href="#i-tutorial"/></svg></span>TUTORIAL</button>
+  <button class="nav-item" type="button" data-go="download"><span class="nav-icon"><svg class="i"><use href="#i-dl"/></svg></span>DOWNLOAD</button>
+  <a class="nav-item" href="#" data-yt><span class="nav-icon"><svg class="i"><use href="#i-yt"/></svg></span>YOUTUBE</a>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>
